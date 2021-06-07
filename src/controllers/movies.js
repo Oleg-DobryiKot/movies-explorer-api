@@ -12,7 +12,7 @@ const createMovie = (req, res, next) => {
   const owner = req.user._id;
   const data = { owner, ...req.body };
   const arrOfValues = Object.values(data);
-  const isNoAnyOfParamsValue = arrOfValues.some(el => el !== '');
+  const isNoAnyOfParamsValue = arrOfValues.some((el) => el !== '');
   if (isNoAnyOfParamsValue || arrOfValues.length !== 12) {
     err.name = 'ValidationError';
     next(err);
@@ -63,5 +63,5 @@ const deleteMovieById = (req, res, next) => {
 module.exports = {
   getMovies,
   createMovie,
-  deleteMovieById
+  deleteMovieById,
 };
