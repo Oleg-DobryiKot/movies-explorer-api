@@ -11,9 +11,9 @@ const getMovies = (req, res, next) => {
 const createMovie = (req, res, next) => {
   const owner = req.user._id;
   const data = { owner, ...req.body };
-  const arrOfParams = Array.from(data);
-  const isNoAnyOfParam = arrOfParams.some(el => el !== '');
-  if (isNoAnyOfParam || arrOfParams.length !== 10) {
+  const arrOfValues = Object.values(data);
+  const isNoAnyOfParamsValue = arrOfValues.some(el => el !== '');
+  if (isNoAnyOfParamsValue || arrOfValues.length !== 12) {
     err.name = 'ValidationError';
     next(err);
   }

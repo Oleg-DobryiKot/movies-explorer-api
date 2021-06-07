@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 dotenv.config();
 
-const { PORT = 3030 } = process.env;
+const { PORT = 3003 } = process.env;
 
 const router = require('./src/routes');
 const errorHandler = require('./src/middlewares/error-handler');
@@ -21,7 +21,7 @@ mongoose.connect('mongodb://localhost:27017/bitfilmsdb', {
 const app = express();
 
 app.use(cors({
-  // origin: 'https://oleg-matveev.students.nomoredomains.icu',
+  // origin: 'https://matveev-oleg.nomoredomains.club',
   origin: true,
   credentials: true,
   exposedHeaders: '*',

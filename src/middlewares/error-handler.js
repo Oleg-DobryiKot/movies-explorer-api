@@ -57,7 +57,7 @@ const errorHandler = (err, req, res, next) => {
   }
   if (err.name === 'NoAuthData') {
     error.statusCode = 400;
-    error.message = 'Пароль или e-mail не могут быть пустыми!';
+    error.message = 'Пароль, Имя или e-mail не могут быть пустыми!';
   }
   if (err.name === 'CastError') {
     error.statusCode = 400;
