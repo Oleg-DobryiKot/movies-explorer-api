@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
+const { NODE_ENV, JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
 const err = new Error();
 
 const auth = (req, res, next) => {
@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
   const token = authorization.replace('Bearer ', '');
   let payload;
   try {
-    payload = jwt.verify(token, JWT_SECRET);
+    payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'ewev434iwq98hcferset32GSGFQEFnf5');
   } catch (e) {
     e.name = 'NoAuth';
     next(e);

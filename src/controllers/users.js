@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const err = new Error();
 
-const { JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
+const { NODE_ENV, JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
 
 const getUserMe = (req, res, next) => {
   const { authorization } = req.headers;
@@ -16,7 +16,7 @@ const getUserMe = (req, res, next) => {
 
   const token = authorization.replace('Bearer ', '');
   try {
-    const { _id } = jwt.verify(token, JWT_SECRET);
+    const { _id } = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'ewev434iwq98hcferset32GSGFQEFnf5');
 
     User.findById(_id)
       .orFail(new Error('NoUser'))

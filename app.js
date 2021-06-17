@@ -7,7 +7,7 @@ const helmet = require('helmet');
 
 dotenv.config();
 
-const { PORT = 3003, MONGODB_PATH = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
+const { NODE_ENV, PORT = 3000, MONGODB_PATH = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
 
 const conectionParam = {
   useNewUrlParser: true,
@@ -21,7 +21,7 @@ const errorHandler = require('./src/middlewares/error-handler');
 const { requestLogger, errorLogger } = require('./src/middlewares/logger');
 const limiter = require('./src/middlewares/limiter');
 
-mongoose.connect(MONGODB_PATH, conectionParam);
+mongoose.connect(NODE_ENV === 'production' ? MONGODB_PATH : 'mongodb://localhost:27017/bitfilmsdb', conectionParam);
 
 const app = express();
 
@@ -42,4 +42,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(PORT, () => {});
+app.listen(NODE_ENV === 'production' ? PORT : 3000, () => {});
