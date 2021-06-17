@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 const err = new Error();
 
-const { JWT_SECRET = 'ewev434iwq98hcfereset3$GSGFQEFnfgnasdf23@sdvfbtr$534n3ox48f3oh4cp' } = process.env;
+const { JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
 
 const getUserMe = (req, res, next) => {
   const { authorization } = req.headers;

@@ -4,8 +4,8 @@ const errorHandler = (err, req, res, next) => {
     message: err.message || 'Ошибка сервера',
   };
   if (err.name === 'ValidationError') {
-    error.statusCode = 400;
-    error.message = 'Ошибка валидации данных. Проверьте правильность переданных параметров.';
+    error.statusCode = 401;
+    error.message = 'Ошибка данных. Проверьте правильность переданных значений.';
   }
   if (err.name === 'NotValidID') {
     error.statusCode = 400;

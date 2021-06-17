@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const { JWT_SECRET = 'ewev434iwq98hcfer$%^!#$!eset3$%!2#~@#GSGFQEFnfgnasdf23@$534n3ox48f3oh4cp' } = process.env;
+const { JWT_SECRET = 'ewev434iwq98hcferset32GSGFQEFnf5' } = process.env;
 const err = new Error();
 
 const auth = (req, res, next) => {
