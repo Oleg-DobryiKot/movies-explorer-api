@@ -10,7 +10,6 @@ const getMovies = (req, res, next) => {
 
 const createMovie = (req, res, next) => {
   const owner = req.user._id;
-  console.log(owner);
   const data = { owner, ...req.body };
   const arrOfValues = Object.values(data);
   if (arrOfValues.length !== 12) {
