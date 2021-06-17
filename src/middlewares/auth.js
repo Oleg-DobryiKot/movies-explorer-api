@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
     err.name = 'NoToken';
-    next(err);
+    return next(err);
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -20,7 +20,7 @@ const auth = (req, res, next) => {
     next(e);
   }
   req.user = payload;
-  next();
+  return next();
 };
 
 module.exports = auth;
