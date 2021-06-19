@@ -24,18 +24,18 @@ const createMovie = (req, res, next) => {
 const deleteMovieById = (req, res, next) => {
   const { movieId } = req.params;
   if (!movieId) {
-    err.name = 'NotValidID';
+    err.name = 'NoMovie';
     next(err);
   }
   Movie.findById(movieId)
-    .orFail(new Error('NoMovie'))
+    .orFail(new Error('NotValidID'))
     .then((movie) => {
       if (movie.owner.toString() !== req.user._id) {
         err.name = 'YouCantDeleteMovie';
         next(err);
       } else {
         Movie.findByIdAndRemove(movieId)
-          .orFail(new Error('NoMovie'))
+          .orFail(new Error('NotValidID'))
           .then((rmMovie) => {
             if (!rmMovie) {
               err.name = 'MovieNotFound';
