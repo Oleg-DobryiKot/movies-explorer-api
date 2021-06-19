@@ -7,7 +7,7 @@ const helmet = require('helmet');
 
 dotenv.config();
 
-const { NODE_ENV, PORT = 3003, MONGODB_PATH = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
+const { NODE_ENV, PORT = 3000, MONGODB_PATH = 'mongodb://localhost:27017/bitfilmsdb' } = process.env;
 
 const conectionParam = {
   useNewUrlParser: true,
@@ -42,4 +42,4 @@ app.use(errorLogger);
 app.use(errors());
 app.use(errorHandler);
 
-app.listen(NODE_ENV === 'production' ? PORT : 3003, () => {});
+app.listen(NODE_ENV === 'production' ? PORT : 3000, () => {});
