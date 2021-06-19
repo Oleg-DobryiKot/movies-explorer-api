@@ -24,7 +24,7 @@ const createMovie = (req, res, next) => {
 const deleteMovieById = (req, res, next) => {
   const { movieId } = req.params;
   if (!movieId) {
-    err.name = 'NoMovie';
+    err.name = 'NotValidID';
     next(err);
   }
   Movie.findById(movieId)
@@ -47,6 +47,9 @@ const deleteMovieById = (req, res, next) => {
             if (e.message === 'NoMovie') {
               e.name = 'MovieNotFound';
             }
+            if (e.message === 'NotValidID') {
+              e.name = 'NotValidID';
+            }
             next(e);
           });
       }
@@ -54,6 +57,9 @@ const deleteMovieById = (req, res, next) => {
     .catch((e) => {
       if (e.message === 'NoMovie') {
         e.name = 'MovieNotFound';
+      }
+      if (e.message === 'NotValidID') {
+        e.name = 'NotValidID';
       }
       next(e);
     });
