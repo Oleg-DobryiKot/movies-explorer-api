@@ -11,13 +11,13 @@ const greateMovieValidation = Joi.object().keys({
   image: Joi.string().required().pattern(regexURL),
   trailer: Joi.string().required().pattern(regexURL),
   thumbnail: Joi.string().required().pattern(regexURL),
-  movieId: Joi.string().length(24).hex(),
+  movieId: Joi.string().required(),
   nameRU: Joi.string().required(),
   nameEN: Joi.string().required(),
 }).unknown(true);
 
 const deleteMovieValidation = Joi.object().keys({
-  movieId: Joi.string().length(24).hex(),
+  _id: Joi.string().length(24).hex(),
 });
 
 module.exports = {
