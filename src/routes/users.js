@@ -5,11 +5,19 @@ const {
   patchUserMe,
 } = require('../controllers/users');
 const {
-  getUserMeValidation,
+  // getUserMeValidation,
   patchUserMeValidation,
 } = require('../schemas/user-req');
 
-router.get('/me', celebrate({ headers: getUserMeValidation }), getUserMe);
+// router.get('/me',
+//   celebrate({
+//     headers: getUserMeValidation
+//   },
+//     options: { allowUnknown: true
+// }), getUserMe);
+
+router.get('/me', getUserMe);
+
 router.patch('/me', celebrate({ body: patchUserMeValidation }), patchUserMe);
 
 module.exports = router;
